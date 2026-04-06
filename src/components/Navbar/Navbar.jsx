@@ -12,8 +12,8 @@ const Navbar = () => {
                     <NavLink to={"/onno-kichu"} className={({isActive})=>`font-semibold ${isActive?"border border-[#23BE0A] text-[#23BE0A] px-3 py-1 rounded-lg":""}`}>Pages to Read</NavLink>
                 </ul>
                 <div className='flex gap-3'>
-                    <button className='btn bg-[#23BE0A] text-white'>Sign in</button>
-                    <button className='btn bg-cyan-500 text-white'>Sign Up</button>
+                    <button className='btn rounded-lg bg-[#23BE0A] text-white'>Sign in</button>
+                    <button className='btn bg-cyan-500 rounded-lg text-white'>Sign Up</button>
                 </div>
             </nav>
         </div>
