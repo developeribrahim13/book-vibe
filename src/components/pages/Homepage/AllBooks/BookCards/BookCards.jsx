@@ -1,11 +1,12 @@
 import React from 'react';
 import { CiStar } from "react-icons/ci";
+import { Link } from 'react-router';
 const BookCards = ({books}) => {
     return (
         <div className='grid grid-cols-3 gap-5 max-w-[80%] mx-auto mt-4 mb-7'>
             {
                 books.map(book=>(
-                 <div className='rounded-2xl overflow-hidden p-3 shadow space-y-3'>
+                 <Link to={`/bookDetails/${book.bookId}`} className='rounded-2xl overflow-hidden p-3 shadow space-y-3'>
                     <div className='bg-gray-100 rounded-2xl flex justify-center items-center py-10'>
                         <img className='w-[150px] h-[200px]' src={book.image}></img>
                     </div>
@@ -22,7 +23,7 @@ const BookCards = ({books}) => {
                         <p className='font-medium text-gray-400'>{book.category}</p>
                         <p className='flex items-center gap-1 font-medium text-gray-400'>{book.rating}<CiStar /></p>
                     </div>
-                 </div> 
+                 </Link> 
                 ))
             }
         </div>

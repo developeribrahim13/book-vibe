@@ -7,6 +7,7 @@ import { RouterProvider } from "react-router/dom";
 import Homepage from './components/pages/Homepage/Homepage.jsx';
 import Books from './components/pages/Books/Books.jsx';
 import Error from './components/pages/error/Error.jsx';
+import BookDetails from './components/pages/bookDetails/BookDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,11 @@ const router = createBrowserRouter([
         path:"/books",
         element:<Books/>
       },
+      {
+        path:"/bookDetails/:id",
+        element: <BookDetails/>,
+        loader: () => fetch("/booksData.json"),
+      }
     ],
     errorElement: <Error/>
   },
