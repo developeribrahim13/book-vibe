@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData, useParams } from 'react-router';
 import { CiStar } from "react-icons/ci";
+import { BookContext } from '../../../context/BookProvider';
 
 const BookDetails = () => {
+    const {handleReadBooks, handleWishList} = useContext(BookContext)
     const {id} =  useParams()
     const books = useLoaderData()
     const expectedBooks = books.find(book => book.bookId == id)
@@ -49,8 +51,8 @@ const BookDetails = () => {
                     </div>
 
                 <div className='flex gap-3'>
-                    <Link className='btn bg-transparent border border-black rounded-xl'>Read</Link>
-                    <Link className='btn bg-cyan-500 text-white rounded-xl'>Wishlist</Link>
+                    <Link className='btn bg-transparent border border-black rounded-xl' onClick={()=>handleReadBooks(expectedBooks)}>Read</Link>
+                    <Link className='btn bg-cyan-500 text-white rounded-xl' onClick={()=>handleWishList(expectedBooks)}>Wishlist</Link>
                 </div>
             </div>
         </div>

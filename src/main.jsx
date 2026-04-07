@@ -8,6 +8,8 @@ import Homepage from './components/pages/Homepage/Homepage.jsx';
 import Books from './components/pages/Books/Books.jsx';
 import Error from './components/pages/error/Error.jsx';
 import BookDetails from './components/pages/bookDetails/BookDetails.jsx';
+import BookProvider from './context/BookProvider.jsx';
+import { ToastContainer } from 'react-toastify';
 
 const router = createBrowserRouter([
   {
@@ -34,5 +36,8 @@ const router = createBrowserRouter([
 
 
 createRoot(document.getElementById('root')).render(
-  <RouterProvider router={router}></RouterProvider>,
+  <BookProvider>
+  <RouterProvider router={router}></RouterProvider>
+  <ToastContainer/>
+  </BookProvider>
 )
