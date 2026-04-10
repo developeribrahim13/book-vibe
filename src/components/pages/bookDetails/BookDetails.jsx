@@ -4,7 +4,7 @@ import { CiStar } from "react-icons/ci";
 import { BookContext } from '../../../context/BookProvider';
 
 const BookDetails = () => {
-    const {handleReadBooks, handleWishList} = useContext(BookContext)
+    const {handleReadBooks, handleWishList,} = useContext(BookContext)
     const {id} =  useParams()
     const books = useLoaderData()
     const expectedBooks = books.find(book => book.bookId == id)

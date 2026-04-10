@@ -7,14 +7,14 @@ const BookProvider = ({children}) => {
     const [readBooks, setReadBooks] = useState([])
     const [wishList, setWishList] = useState([])
 const handleReadBooks = (books) => {
-    const isExistInReadBooks = readBooks.find(book=>book.id==books.id)
-    const isExistInWishList = wishList.find(book=>book.id==books.id)
+    const isExistInReadBooks = readBooks.find(book=>book.bookId==books.bookId)
+    const isExistInWishList = wishList.find(book=>book.bookId==books.bookId)
     if(isExistInReadBooks)
     {
         toast.error(`${books.bookName} is already exist in the read list`)
         return;
     }
-    else if(isExistInWishList)
+    if(isExistInWishList)
     {
         toast.error(`${books.bookName} is already exist in the wish list`)
         return;
@@ -24,14 +24,14 @@ const handleReadBooks = (books) => {
 }
 
 const handleWishList = (books) => {
-    const isExistInReadBooks = readBooks.find(book=>book.id==books.id)
-    const isExistInWishList = wishList.find(book=>book.id==books.id)
+    const isExistInReadBooks = readBooks.find(book=>book.bookId==books.bookId)
+    const isExistInWishList = wishList.find(book=>book.bookId==books.bookId)
     if(isExistInReadBooks)
     {
         toast.error(`${books.bookName} is already exist in the read list`)
         return;
     }
-    else if(isExistInWishList)
+    if(isExistInWishList)
     {
         toast.error(`${books.bookName} is already exist in the wish list`)
         return;
