@@ -5,14 +5,19 @@ import { HiOutlineUsers } from "react-icons/hi2";
 import { GrDocumentText } from "react-icons/gr";
 import { Link } from 'react-router';
 
-const ReadList = () => {
+const ReadList = ({shortType}) => {
     const {readBooks} = useContext(BookContext)
+    let filterdReadBooks = [...readBooks]
+    if(shortType == "pages")
+    filterdReadBooks.sort((a,b)=>a.totalPages - b.totalPages)
+    else if(shortType == "rating")
+    filterdReadBooks.sort((a,b)=> parseFloat(a.rating) - parseFloat(b.rating))
     return (
         <div>
-            {readBooks.length}
+            {filterdReadBooks.length}
             {
-                readBooks.map((book, index)=>(
-                    <div key={index} className='mb-6 rounded-2xl p-3.5 shadow flex gap-7 border border-gray-100'>
+                filterdReadBooks.map((book)=>(
+                    <div key={book.bookId} className='mb-6 rounded-2xl p-3.5 shadow flex gap-7 border border-gray-100'>
                         <div className='bg-gray-200 rounded-2xl flex justify-center items-center p-8'>
                             <img src={book.image} className='w-[90px] h-[120px]'></img>
                         </div>

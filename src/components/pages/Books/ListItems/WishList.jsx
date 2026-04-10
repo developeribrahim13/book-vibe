@@ -5,14 +5,19 @@ import { HiOutlineUsers } from "react-icons/hi2";
 import { GrDocumentText } from "react-icons/gr";
 import { Link } from 'react-router';
 
-const WishList = () => {
+const WishList = ({shortType}) => {
     const {wishList} = useContext(BookContext)
+    let filterdWishList = [...wishList]
+    if(shortType == "pages")
+    filterdWishList.sort((a,b)=>a.totalPages - b.totalPages)
+    else if(shortType == "rating")
+    filterdWishList.sort((a,b)=> parseFloat(a.rating) - parseFloat(b.rating))
     return (
         <div>
-                    {wishList.length}
+                    {filterdWishList.length}
                     {
-                        wishList.map((book, index)=>(
-                            <div key={index} className='mb-6 rounded-2xl p-3.5 shadow flex gap-7 border border-gray-100'>
+                        filterdWishList.map((book)=>(
+                            <div key={book.bookId} className='mb-6 rounded-2xl p-3.5 shadow flex gap-7 border border-gray-100'>
                                 <div className='bg-gray-200 rounded-2xl flex justify-center items-center p-8'>
                                     <img src={book.image} className='w-[90px] h-[120px]'></img>
                                 </div>
